@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuTools — Your Documents, Simplified</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-shell">
+    <!-- HEADER -->
+    <header class="topbar">
+        <a href="/" class="brand">
+            <div class="brand-icon">D</div>
+            <div>
+                <div class="brand-name">DocuTools</div>
+                <div class="brand-subtitle">Document toolkit</div>
+            </div>
+        </a>
+
+        <div class="header-actions">
+            <div class="search-box">
+                <span class="search-icon">⌕</span>
+                <input type="text" id="searchInput" placeholder="Search tools..." autocomplete="off">
+                <span class="search-shortcut">/</span>
+            </div>
+            <button class="icon-button" id="settingsButton" type="button" title="Settings">⚙</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span></span>
+                All-in-one document toolkit
+            </div>
+            <h1>Your documents, <span>simplified.</span></h1>
+            <p>Convert, organize, protect, sign and transform your documents — all from one simple workspace.</p>
+        </div>
+
+        <div class="hero-files" aria-hidden="true">
+            <div class="floating-file file-pdf">
+                <div class="file-top">PDF</div>
+                <div class="file-lines"><i></i><i></i><i></i></div>
+            </div>
+            <div class="floating-file file-word">
+                <div class="file-top">W</div>
+                <div class="file-lines"><i></i><i></i><i></i></div>
+            </div>
+            <div class="floating-file file-ppt">
+                <div class="file-top">P</div>
+                <div class="file-lines"><i></i><i></i></div>
+            </div>
+            <div class="floating-file file-excel">
+                <div class="file-top">X</div>
+                <div class="file-lines"><i></i><i></i><i></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <main>
+        <div class="section-heading">
+            <div>
+                <h2>All tools</h2>
+                <p id="toolCount">16 tools available</p>
+            </div>
+        </div>
+
+        <section class="tool-grid" id="toolGrid">
+            <!-- 1 PDF -> IMAGE -->
+            <article class="tool-card" data-tool="pdf-to-image" data-name="pdf image convert pdf to image">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-pdf">PDF</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>PDF → Image</h3>
+                <p>Convert PDF pages into high-quality images.</p>
+            </article>
+
+            <!-- 2 IMAGE -> PDF -->
+            <article class="tool-card" data-tool="image-to-pdf" data-name="image pdf jpg png convert">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-image">IMG</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Image → PDF</h3>
+                <p>Turn one or multiple images into a PDF.</p>
+            </article>
+
+            <!-- 3 MERGE -->
+            <article class="tool-card" data-tool="merge-pdf" data-name="merge combine join pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-merge">+</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Merge PDF</h3>
+                <p>Combine multiple PDF files into one.</p>
+            </article>
+
+            <!-- 4 SPLIT -->
+            <article class="tool-card" data-tool="split-pdf" data-name="split divide separate pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-split">÷</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Split PDF</h3>
+                <p>Split a PDF into individual pages.</p>
+            </article>
+
+            <!-- 5 COMPRESS -->
+            <article class="tool-card" data-tool="compress-pdf" data-name="compress reduce pdf size">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-compress">↓</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Compress PDF</h3>
+                <p>Reduce PDF file size while keeping it usable.</p>
+            </article>
+
+            <!-- 6 PDF -> TEXT -->
+            <article class="tool-card" data-tool="pdf-to-text" data-name="pdf text extract text">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-text">TXT</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>PDF → Text</h3>
+                <p>Extract readable text from PDF files.</p>
+            </article>
+
+            <!-- 7 LOCK -->
+            <article class="tool-card" data-tool="lock-pdf" data-name="lock protect password secure pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-lock">🔒</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Lock PDF</h3>
+                <p>Protect your PDF with a password.</p>
+            </article>
+
+            <!-- 8 WORD -> PDF -->
+            <article class="tool-card" data-tool="word-to-pdf" data-name="word doc docx pdf convert">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-word">W</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Word → PDF</h3>
+                <p>Convert Word documents into PDF.</p>
+            </article>
+
+            <!-- 9 POWERPOINT -> PDF -->
+            <article class="tool-card" data-tool="powerpoint-to-pdf" data-name="powerpoint ppt pptx presentation pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-ppt">P</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>PowerPoint → PDF</h3>
+                <p>Convert presentations into PDF files.</p>
+            </article>
+
+            <!-- 10 EXCEL -> PDF -->
+            <article class="tool-card" data-tool="excel-to-pdf" data-name="excel xls xlsx spreadsheet pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-excel">X</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Excel → PDF</h3>
+                <p>Convert spreadsheets into PDF files.</p>
+            </article>
+
+            <!-- 11 PDF -> WORD -->
+            <article class="tool-card" data-tool="pdf-to-word" data-name="pdf word doc docx convert">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-word">W</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>PDF → Word</h3>
+                <p>Convert text-based PDFs into editable Word files.</p>
+            </article>
+
+            <!-- 12 PDF -> POWERPOINT -->
+            <article class="tool-card" data-tool="pdf-to-powerpoint" data-name="pdf powerpoint ppt pptx presentation">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-ppt">P</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>PDF → PowerPoint</h3>
+                <p>Turn PDF pages into presentation slides.</p>
+            </article>
+
+            <!-- 13 PDF -> EXCEL -->
+            <article class="tool-card" data-tool="pdf-to-excel" data-name="pdf excel xls xlsx table spreadsheet">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-excel">X</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>PDF → Excel</h3>
+                <p>Extract tables from PDF into Excel.</p>
+            </article>
+
+            <!-- 14 CROP -->
+            <article class="tool-card tool-card-crop" data-tool="crop-pdf" data-name="crop trim cut pdf page">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-crop">✂</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Crop PDF</h3>
+                <p>Trim the margins and crop PDF pages.</p>
+            </article>
+
+            <!-- 15 SIGN -->
+            <article class="tool-card tool-card-sign" data-tool="sign-pdf" data-name="sign signature e-sign pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-sign">✍</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Sign PDF</h3>
+                <p>Add your signature directly to a PDF.</p>
+            </article>
+
+            <!-- 16 PAGE NUMBERS -->
+            <article class="tool-card tool-card-numbers" data-tool="add-page-numbers" data-name="page numbers numbering pdf pages">
+                <div class="tool-card-top">
+                    <div class="tool-icon icon-numbers">#</div>
+                    <button class="tool-arrow" type="button">→</button>
+                </div>
+                <h3>Add Page Numbers</h3>
+                <p>Add clean page numbers to your PDF.</p>
+            </article>
+
+            <!-- NO RESULTS -->
+            <div class="no-results" id="noResults">
+                <div class="no-results-icon">⌕</div>
+                <h3>No tools found</h3>
+                <p>Try searching for another document tool.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- TOOL MODAL -->
+    <div class="modal-overlay" id="toolModal" aria-hidden="true">
+        <div class="tool-modal" role="dialog" aria-modal="true">
+            <button class="modal-close" id="modalClose" type="button">×</button>
+
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">PDF</div>
+                <div>
+                    <h2 id="modalTitle">PDF → Image</h2>
+                    <p id="modalDescription">Convert your PDF into images.</p>
+                </div>
+            </div>
+
+            <!-- MAIN FILE -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" hidden>
+                <div class="upload-icon">↑</div>
+                <h3 id="uploadTitle">Choose a file</h3>
+                <p id="uploadDescription">Click here to select your document</p>
+                <button class="browse-button" id="browseButton" type="button">Browse files</button>
+                <div class="selected-files" id="selectedFiles"></div>
+            </div>
+
+            <!-- EXTRA FILE FOR SIGNATURE -->
+            <div class="extra-upload" id="signatureUpload">
+                <label>Signature image</label>
+                <div class="mini-upload">
+                    <input type="file" id="signatureInput" accept="image/png,image/jpeg,image/jpg">
+                    <span>PNG or JPG signature</span>
+                </div>
+            </div>
+
+            <!-- OPTIONS -->
+            <div class="tool-options" id="toolOptions">
+                <!-- PDF -> IMAGE -->
+                <div class="option-group" data-option="pdf-to-image">
+                    <label for="imageFormat">Image format</label>
+                    <select id="imageFormat">
+                        <option value="png">PNG</option>
+                        <option value="jpg">JPG</option>
+                    </select>
+                </div>
+
+                <!-- LOCK PDF -->
+                <div class="option-group" data-option="lock-pdf">
+                    <label for="pdfPassword">Password</label>
+                    <input type="password" id="pdfPassword" placeholder="Enter password">
+                </div>
+
+                <!-- CROP -->
+                <div class="option-group crop-options" data-option="crop-pdf">
+                    <div class="option-title">Crop margins</div>
+                    <div class="four-options">
+                        <div>
+                            <label for="cropLeft">Left</label>
+                            <input type="number" id="cropLeft" value="0" min="0">
+                        </div>
+                        <div>
+                            <label for="cropTop">Top</label>
+                            <input type="number" id="cropTop" value="0" min="0">
+                        </div>
+                        <div>
+                            <label for="cropRight">Right</label>
+                            <input type="number" id="cropRight" value="0" min="0">
+                        </div>
+                        <div>
+                            <label for="cropBottom">Bottom</label>
+                            <input type="number" id="cropBottom" value="0" min="0">
+                        </div>
+                    </div>
+                    <small class="option-help">Values are in PDF points.</small>
+                </div>
+
+                <!-- SIGN -->
+                <div class="option-group sign-options" data-option="sign-pdf">
+                    <div class="option-title">Signature settings</div>
+                    <div class="four-options">
+                        <div>
+                            <label for="signPage">Page</label>
+                            <input type="number" id="signPage" value="1" min="1">
+                        </div>
+                        <div>
+                            <label for="signX">X</label>
+                            <input type="number" id="signX" value="50" min="0">
+                        </div>
+                        <div>
+                            <label for="signY">Y</label>
+                            <input type="number" id="signY" value="50" min="0">
+                        </div>
+                        <div>
+                            <label for="signWidth">Width</label>
+                            <input type="number" id="signWidth" value="150" min="1">
+                        </div>
+                    </div>
+                    <div class="single-option">
+                        <label for="signHeight">Height</label>
+                        <input type="number" id="signHeight" value="60" min="1">
+                    </div>
+                    <small class="option-help">X/Y start from the top-left of the page.</small>
+                </div>
+
+                <!-- PAGE NUMBERS -->
+                <div class="option-group" data-option="add-page-numbers">
+                    <label for="pageNumberPosition">Position</label>
+                    <select id="pageNumberPosition">
+                        <option value="bottom-center">Bottom Center</option>
+                        <option value="bottom-left">Bottom Left</option>
+                        <option value="bottom-right">Bottom Right</option>
+                        <option value="top-center">Top Center</option>
+                        <option value="top-left">Top Left</option>
+                        <option value="top-right">Top Right</option>
+                    </select>
+                    <div class="two-options">
+                        <div>
+                            <label for="startNumber">Start number</label>
+                            <input type="number" id="startNumber" value="1" min="1">
+                        </div>
+                        <div>
+                            <label for="pageFontSize">Font size</label>
+                            <input type="number" id="pageFontSize" value="10" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROCESSING -->
+            <div class="processing-box" id="processingBox">
+                <div class="spinner"></div>
+                <div>
+                    <strong>Processing...</strong>
+                    <span id="processingText">Please wait.</span>
+                </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="success-box" id="successBox">
+                <span>✓</span>
+                <div>
+                    <strong>Done!</strong>
+                    <small>Your file is ready.</small>
+                </div>
+            </div>
+
+            <!-- ERROR -->
+            <div class="error-box" id="errorBox">
+                <span>!</span>
+                <div>
+                    <strong>Something went wrong</strong>
+                    <small id="errorText">Please try again.</small>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="modal-actions">
+                <button class="secondary-button" id="cancelButton" type="button">Cancel</button>
+                <button class="primary-button" id="convertButton" type="button">Convert</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-panel-header">
+            <div>
+                <strong>Settings</strong>
+                <small>DocuTools</small>
+            </div>
+            <button id="settingsClose" type="button">×</button>
+        </div>
+        <div class="settings-row">
+            <div>
+                <strong>Local processing</strong>
+                <small>Files are processed by your local server.</small>
+            </div>
+            <span class="status-dot"></span>
+        </div>
+        <div class="settings-row">
+            <div>
+                <strong>Maximum upload</strong>
+                <small>50 MB per request</small>
+            </div>
+        </div>
+        <div class="settings-row">
+            <div>
+                <strong>Available tools</strong>
+                <small>16 document utilities</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <strong>DocuTools</strong>
+            <span>•</span>
+            Your documents, simplified.
+        </div>
+        <div class="footer-status">
+            <span></span>
+            Local server ready
+        </div>
+    </footer>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+const toolCards = document.querySelectorAll(".tool-card");
+const searchInput = document.getElementById("searchInput");
+const toolCount = document.getElementById("toolCount");
+const noResults = document.getElementById("noResults");
+
+const toolModal = document.getElementById("toolModal");
+const modalClose = document.getElementById("modalClose");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalIcon = document.getElementById("modalIcon");
+
+const uploadArea = document.getElementById("uploadArea");
+const fileInput = document.getElementById("fileInput");
+const pdfPassword = document.getElementById("pdfPassword");
+const browseButton = document.getElementById("browseButton");
+const uploadTitle = document.getElementById("uploadTitle");
+const uploadDescription = document.getElementById("uploadDescription");
+const selectedFiles = document.getElementById("selectedFiles");
+
+const signatureUpload = document.getElementById("signatureUpload");
+const signatureInput = document.getElementById("signatureInput");
+
+const processingBox = document.getElementById("processingBox");
+const processingText = document.getElementById("processingText");
+const successBox = document.getElementById("successBox");
+const errorBox = document.getElementById("errorBox");
+const errorText = document.getElementById("errorText");
+
+const convertButton = document.getElementById("convertButton");
+const cancelButton = document.getElementById("cancelButton");
+
+const settingsButton = document.getElementById("settingsButton");
+const settingsPanel = document.getElementById("settingsPanel");
+const settingsClose = document.getElementById("settingsClose");
+
+let currentTool = null;
+let selectedFilesArray = [];
+
+const tools = {
+    "pdf-to-image": { title: "PDF → Image", description: "Convert PDF pages into high-quality images.", icon: "PDF", accept: ".pdf", multiple: false, button: "Convert to Image" },
+    "image-to-pdf": { title: "Image → PDF", description: "Turn one or multiple images into a single PDF.", icon: "IMG", accept: "image/png,image/jpeg,image/jpg", multiple: true, button: "Create PDF" },
+    "merge-pdf": { title: "Merge PDF", description: "Combine multiple PDF files into one document.", icon: "+", accept: ".pdf", multiple: true, button: "Merge PDFs" },
+    "split-pdf": { title: "Split PDF", description: "Split a PDF into individual page files.", icon: "÷", accept: ".pdf", multiple: false, button: "Split PDF" },
+    "compress-pdf": { title: "Compress PDF", description: "Reduce PDF file size while keeping it usable.", icon: "↓", accept: ".pdf", multiple: false, button: "Compress PDF" },
+    "pdf-to-text": { title: "PDF → Text", description: "Extract readable text from your PDF.", icon: "TXT", accept: ".pdf", multiple: false, button: "Extract Text" },
+    "lock-pdf": { title: "Lock PDF", description: "Protect your PDF with a password.", icon: "🔒", accept: ".pdf", multiple: false, button: "Protect PDF" },
+    "word-to-pdf": { title: "Word → PDF", description: "Convert Word documents into PDF.", icon: "W", accept: ".doc,.docx", multiple: false, button: "Convert to PDF" },
+    "powerpoint-to-pdf": { title: "PowerPoint → PDF", description: "Convert PowerPoint presentations into PDF.", icon: "P", accept: ".ppt,.pptx", multiple: false, button: "Convert to PDF" },
+    "excel-to-pdf": { title: "Excel → PDF", description: "Convert Excel spreadsheets into PDF.", icon: "X", accept: ".xls,.xlsx", multiple: false, button: "Convert to PDF" },
+    "pdf-to-word": { title: "PDF → Word", description: "Convert text-based PDFs into editable Word files.", icon: "W", accept: ".pdf", multiple: false, button: "Convert to Word" },
+    "pdf-to-powerpoint": { title: "PDF → PowerPoint", description: "Turn PDF pages into presentation slides.", icon: "P", accept: ".pdf", multiple: false, button: "Convert to PowerPoint" },
+    "pdf-to-excel": { title: "PDF → Excel", description: "Extract structured tables from PDF into Excel.", icon: "X", accept: ".pdf", multiple: false, button: "Convert to Excel" },
+    "crop-pdf": { title: "Crop PDF", description: "Trim the margins of your PDF pages.", icon: "✂", accept: ".pdf", multiple: false, button: "Crop PDF" },
+    "sign-pdf": { title: "Sign PDF", description: "Add your signature directly to a PDF.", icon: "✍", accept: ".pdf", multiple: false, button: "Sign PDF" },
+    "add-page-numbers": { title: "Add Page Numbers", description: "Add clean page numbers to your PDF.", icon: "#", accept: ".pdf", multiple: false, button: "Add Numbers" }
+};
+
+function openTool(toolName) {
+    const tool = tools[toolName];
+    if (!tool) return;
+
+    currentTool = toolName;
+    modalTitle.textContent = tool.title;
+    modalDescription.textContent = tool.description;
+    modalIcon.textContent = tool.icon;
+
+    fileInput.value = "";
+    fileInput.accept = tool.accept;
+    fileInput.multiple = tool.multiple;
+
+    signatureInput.value = "";
+    selectedFilesArray = [];
+    selectedFiles.innerHTML = "";
+
+    uploadTitle.textContent = tool.multiple ? "Choose your files" : "Choose your file";
+    uploadDescription.textContent = tool.multiple ? "Select one or more files" : "Click here to select your document";
+    convertButton.textContent = tool.button;
+
+    resetStatus();
+
+    document.querySelectorAll(".option-group").forEach(group => {
+        group.style.display = group.dataset.option === toolName ? "block" : "none";
+    });
+
+    signatureUpload.style.display = toolName === "sign-pdf" ? "block" : "none";
+    toolModal.classList.add("active");
+    toolModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+}
+
+function closeTool() {
+    toolModal.classList.remove("active");
+    toolModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+
+    currentTool = null;
+    selectedFilesArray = [];
+    fileInput.value = "";
+    signatureInput.value = "";
+    resetStatus();
+}
+
+function resetStatus() {
+    processingBox.classList.remove("show");
+    successBox.classList.remove("show");
+    errorBox.classList.remove("show");
+    convertButton.disabled = false;
+    errorText.textContent = "Please try again.";
+}
+
+function renderSelectedFiles() {
+    selectedFiles.innerHTML = "";
+    if (!selectedFilesArray.length) return;
+
+    selectedFilesArray.forEach(file => {
+        const item = document.createElement("div");
+        item.className = "selected-file";
+
+        const name = document.createElement("span");
+        name.textContent = file.name;
+
+        const size = document.createElement("small");
+        size.textContent = formatFileSize(file.size);
+
+        item.appendChild(name);
+        item.appendChild(size);
+        selectedFiles.appendChild(item);
+    });
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return "0 B";
+    const units = ["B", "KB", "MB", "GB"];
+    const index = Math.floor(Math.log(bytes) / Math.log(1024));
+    return (bytes / Math.pow(1024, index)).toFixed(index === 0 ? 0 : 1) + " " + units[index];
+}
+
+function handleFiles(files) {
+    if (!files || !files.length) return;
+    const tool = tools[currentTool];
+    selectedFilesArray = tool.multiple ? Array.from(files) : [files[0]];
+    renderSelectedFiles();
+}
+
+browseButton.addEventListener("click", event => {
+    event.stopPropagation();
+    fileInput.click();
+});
+
+uploadArea.addEventListener("click", event => {
+    if (event.target === browseButton) return;
+    fileInput.click();
+});
+
+fileInput.addEventListener("change", () => {
+    handleFiles(fileInput.files);
+});
+
+uploadArea.addEventListener("dragover", event => {
+    event.preventDefault();
+    uploadArea.classList.add("dragging");
+});
+
+uploadArea.addEventListener("dragleave", () => {
+    uploadArea.classList.remove("dragging");
+});
+
+uploadArea.addEventListener("drop", event => {
+    event.preventDefault();
+    uploadArea.classList.remove("dragging");
+    handleFiles(event.dataTransfer.files);
+});
+
+toolCards.forEach(card => {
+    card.addEventListener("click", () => {
+        openTool(card.dataset.tool);
+    });
+});
+
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    toolCards.forEach(card => {
+        const searchData = (card.dataset.name + " " + card.textContent).toLowerCase();
+        const matches = searchData.includes(query);
+        card.style.display = matches ? "" : "none";
+        if (matches) visibleCount++;
+    });
+
+    noResults.classList.toggle("show", visibleCount === 0);
+    toolCount.textContent = query
+        ? `${visibleCount} tool${visibleCount === 1 ? "" : "s"} found`
+        : "16 tools available";
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "/" && document.activeElement.tagName !== "INPUT") {
+        event.preventDefault();
+        searchInput.focus();
+    }
+    if (event.key === "Escape" && toolModal.classList.contains("active")) {
+        closeTool();
+    }
+});
+
+modalClose.addEventListener("click", closeTool);
+cancelButton.addEventListener("click", closeTool);
+
+toolModal.addEventListener("click", event => {
+    if (event.target === toolModal) closeTool();
+});
+
+convertButton.addEventListener("click", async () => {
+    if (!currentTool) return;
+
+    if (!selectedFilesArray.length) {
+        showError("Please select a file first.");
+        return;
+    }
+
+    if (currentTool === "lock-pdf" && !pdfPassword.value.trim()) {
+        showError("Please enter a password.");
+        return;
+    }
+
+    if (currentTool === "sign-pdf" && !signatureInput.files.length) {
+        showError("Please upload a signature image.");
+        return;
+    }
+
+    const formData = new FormData();
+
+    if (currentTool === "image-to-pdf" || currentTool === "merge-pdf") {
+        selectedFilesArray.forEach(file => formData.append("files", file));
+    } else {
+        formData.append("file", selectedFilesArray[0]);
+    }
+
+    if (currentTool === "pdf-to-image") {
+        formData.append("format", document.getElementById("imageFormat").value);
+    }
+
+    if (currentTool === "lock-pdf") {
+        formData.append("password", document.getElementById("pdfPassword").value);
+    }
+
+    if (currentTool === "crop-pdf") {
+        formData.append("left", document.getElementById("cropLeft").value);
+        formData.append("top", document.getElementById("cropTop").value);
+        formData.append("right", document.getElementById("cropRight").value);
+        formData.append("bottom", document.getElementById("cropBottom").value);
+    }
+
+    if (currentTool === "sign-pdf") {
+        formData.append("signature", signatureInput.files[0]);
+        formData.append("page", document.getElementById("signPage").value);
+        formData.append("x", document.getElementById("signX").value);
+        formData.append("y", document.getElementById("signY").value);
+        formData.append("width", document.getElementById("signWidth").value);
+        formData.append("height", document.getElementById("signHeight").value);
+    }
+
+    if (currentTool === "add-page-numbers") {
+        formData.append("position", document.getElementById("pageNumberPosition").value);
+        formData.append("start_number", document.getElementById("startNumber").value);
+        formData.append("font_size", document.getElementById("pageFontSize").value);
+    }
+
+    resetStatus();
+    processingBox.classList.add("show");
+    convertButton.disabled = true;
+    processingText.textContent = "Your document is being processed...";
+
+    try {
+        const response = await fetch(`/api/${currentTool}`, {
+            method: "POST",
+            body: formData
+        });
+
+        const contentType = response.headers.get("content-type") || "";
+
+        if (!response.ok) {
+            let message = "Processing failed.";
+            if (contentType.includes("application/json")) {
+                const data = await response.json();
+                message = data.error || message;
+            }
+            throw new Error(message);
+        }
+
+        const blob = await response.blob();
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = getDownloadName(currentTool);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.URL.revokeObjectURL(downloadUrl);
+
+        processingBox.classList.remove("show");
+        successBox.classList.add("show");
+        convertButton.disabled = false;
+    } catch (error) {
+        processingBox.classList.remove("show");
+        convertButton.disabled = false;
+        showError(error.message);
+    }
+});
+
+function getDownloadName(tool) {
+    const names = {
+        "pdf-to-image": "DocuTools_Image.png",
+        "image-to-pdf": "DocuTools_Images.pdf",
+        "merge-pdf": "DocuTools_Merged.pdf",
+        "split-pdf": "DocuTools_Page.pdf",
+        "compress-pdf": "DocuTools_Compressed.pdf",
+        "pdf-to-text": "DocuTools_Text.txt",
+        "lock-pdf": "DocuTools_Protected.pdf",
+        "word-to-pdf": "DocuTools_Word.pdf",
+        "powerpoint-to-pdf": "DocuTools_Presentation.pdf",
+        "excel-to-pdf": "DocuTools_Excel.pdf",
+        "pdf-to-word": "DocuTools_Word.docx",
+        "pdf-to-powerpoint": "DocuTools_Presentation.pptx",
+        "pdf-to-excel": "DocuTools_Excel.xlsx",
+        "crop-pdf": "DocuTools_Cropped.pdf",
+        "sign-pdf": "DocuTools_Signed.pdf",
+        "add-page-numbers": "DocuTools_Page_Numbers.pdf"
+    };
+    return names[tool] || "DocuTools_Output";
+}
+
+function showError(message) {
+    errorText.textContent = message || "Something went wrong.";
+    errorBox.classList.add("show");
+}
+
+settingsButton.addEventListener("click", () => {
+    settingsPanel.classList.toggle("show");
+});
+
+settingsClose.addEventListener("click", () => {
+    settingsPanel.classList.remove("show");
+});
+
+document.querySelectorAll(".option-group").forEach(group => {
+    group.style.display = "none";
+});
+
+signatureUpload.style.display = "none";
+</script>
+
+</body>
+</html>

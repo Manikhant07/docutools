@@ -1,0 +1,10 @@
+Flask
+PyMuPDF
+pypdf
+Pillow
+pdf2docx
+pdfplumber
+python-docx
+openpyxl
+python-pptx
+gunicorn
